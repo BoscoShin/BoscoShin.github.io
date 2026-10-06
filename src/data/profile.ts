@@ -18,11 +18,12 @@ photos: [
   { src: '/images/profile/image1.jpg', alt: 'Wonseop Shin portrait' },
   { src: '/images/profile/image2.jpg', alt: 'Wonseop Shin at a conference' },
   { src: '/images/profile/image3.jpg', alt: 'Wonseop Shin at a conference' },
-    { src: '/images/profile/image4.jpg', alt: 'Wonseop Shin at a conference' },
-      { src: '/images/profile/image5.jpg', alt: 'Wonseop Shin at a conference' },
-        { src: '/images/profile/image6.jpg', alt: 'Wonseop Shin at a conference' },
-          { src: '/images/profile/image7.jpg', alt: 'Wonseop Shin at a conference' },
-{ src: '/images/profile/image9.png', alt: 'Wonseop Shin at a conference' },
+  { src: '/images/profile/image4.jpg', alt: 'Wonseop Shin at a conference' },
+  { src: '/images/profile/image5.jpg', alt: 'Wonseop Shin at a conference' },
+  { src: '/images/profile/image6.jpg', alt: 'Wonseop Shin at a conference' },
+  { src: '/images/profile/image7.jpg', alt: 'Wonseop Shin at a conference' },
+  { src: '/images/profile/image8.jpg', alt: 'Wonseop Shin at a conference' },
+
 ] as ProfilePhoto[],
 photoIntervalMs: 5000,
 links: {
