@@ -231,6 +231,10 @@ profile-gallery { display: block; width: 100%; }
 .mini-room.ready .pose-4 { animation-delay: -1.2s; }
 @keyframes pixel-dance { 0%,24.99% { opacity: 1; } 25%,100% { opacity: 0; } }
 .mini-room.paused .pixel-dance { animation-play-state: paused; }
+.record-spin { transform-box: fill-box; transform-origin: center; }
+.mini-room.ready .record-spin { animation: record-spin 3.2s linear infinite; }
+.mini-room.paused .record-spin { animation-play-state: paused; }
+@keyframes record-spin { to { transform: rotate(360deg); } }
 @media(max-width:1000px) { .hero-profile-grid { padding: 24px; gap: 30px; grid-template-columns: minmax(0,1fr) 200px; } }
 @media(max-width:700px) {
  .site-header { height: 74px; } .site-header nav a { padding: 6px 8px; font-size: 14px; } .site-header nav { gap: 5px; }
@@ -242,7 +246,7 @@ profile-gallery { display: block; width: 100%; }
  .hero-links { gap: 14px; }
 }
 @media(max-width:360px) { .site-header { flex-direction: row; align-items: center; gap: 6px; } .wordmark { font-size: 14px; } .site-header nav { gap: 3px; } .site-header nav a { font-size: 13px; padding: 5px 6px; } .hero h1 { font-size: 32px; } .hero-profile-grid { padding: 16px; } }
-@media(prefers-reduced-motion:reduce) { .mini-room.ready .pixel-dance { animation: none; } .mini-room .pose-1 { opacity: 1; } }
+@media(prefers-reduced-motion:reduce) { .mini-room.ready :is(.pixel-dance, .record-spin) { animation: none; } .mini-room .pose-1 { opacity: 1; } }
 
 /* R&D projects: preserve the complete lab overview image and funding metadata. */
 .rd-section-title { margin: 0 0 8px; font-size: 23px; font-weight: 500; }

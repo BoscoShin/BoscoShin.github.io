@@ -1,14 +1,15 @@
 ---
 const poses = [
-  { x: 70, y: 40, left: 'M6 42H0V36H-6V24H0V30H6Z', right: 'M54 42H60V48H66V54H60V52H54Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V66H52V72H38V68H36Z' },
-  { x: 70, y: 38, left: 'M6 42H0V46H-6V52H0V50H6Z', right: 'M54 42H60V36H66V24H60V30H54Z', feet: 'M16 62H28V66H24V72H10V68H16ZM36 62H46V72H34V68H36Z' },
-  { x: 70, y: 40, left: 'M6 42H0V36H-6V24H0V30H6Z', right: 'M54 42H60V36H66V24H60V30H54Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V72H50V76H36Z' },
-  { x: 70, y: 38, left: 'M6 42H0V46H-6V52H0V50H6Z', right: 'M54 42H60V48H66V54H60V52H54Z', feet: 'M16 62H28V66H24V72H10V68H16ZM36 62H46V66H52V72H38V68H36Z' },
+  { x: 70, y: 40, left: 'M6 42H12V48H8V54H4V60H-4V56H0V48H6Z', right: 'M48 42H54V48H58V54H64V60H56V58H52V52H48Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V72H50V76H36Z', hands: 'M70 104H78V108H70ZM124 102H132V106H124Z' },
+  { x: 70, y: 38, left: 'M6 42H12V50H8V58H2V62H-4V56H0V48H6Z', right: 'M48 42H54V48H58V54H64V62H56V58H52V52H48Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V72H50V76H36Z', hands: 'M74 106H82V110H74ZM120 104H128V108H120Z' },
+  { x: 70, y: 40, left: 'M6 42H12V48H8V54H4V60H-4V56H0V48H6Z', right: 'M48 42H56V38H60V24H54V32H50V36H48Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V72H50V76H36Z', hands: 'M70 104H78V108H70Z' },
+  { x: 70, y: 38, left: 'M6 42H12V50H8V58H2V62H-4V56H0V48H6Z', right: 'M48 42H54V48H58V54H64V62H56V58H52V52H48Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V72H50V76H36Z', hands: 'M78 104H86V108H78ZM98 106H104V112H98Z' },
 ];
+const records = [{ x: 76, color: '#e4aa6d' }, { x: 128, color: '#7db8ce' }];
 ---
 <pixel-room class="mini-room">
-  <div class="mini-room-caption"><span>Its Me!</span><button type="button" hidden aria-label="Pause pixel dancer">Pause</button></div>
-  <svg viewBox="0 0 200 156" role="img" aria-label="A pixel portrait of Wonseop Shin with black hair and glasses, dancing in a sunny computer graphics studio" shape-rendering="crispEdges">
+  <div class="mini-room-caption"><span>Its Me!</span><button type="button" hidden aria-label="Pause pixel DJ">Pause</button></div>
+  <svg viewBox="0 0 200 156" role="img" aria-label="Wonseop Shin with black hair, glasses and blue headphones, DJing with two vinyl records in a pixel studio" shape-rendering="crispEdges">
     <rect x="1" y="1" width="198" height="154" fill="#f3f8f4"/>
     <path d="M2 2H198V98H2Z" fill="#f5f5df"/>
     <path d="M2 98H198V154H2Z" fill="#d4e5cd"/>
@@ -62,6 +63,32 @@ const poses = [
       <path d="M14 36H20V38H14ZM40 36H46V38H40Z" fill="#eaa187"/>
       <path d="M28 30H30V34H32V36H28Z" fill="#dba57e"/>
       <path d="M26 38H34V40H26Z" fill="#8d5651"/>
+      <path d="M10 18V12H16V8H44V12H50V18H46V14H42V12H18V14H14V18Z" fill="#5076a9"/>
+      <path d="M6 24H12V36H6ZM48 24H54V36H48Z" fill="#26303d"/>
+      <path d="M6 26H10V34H6ZM50 26H54V34H50Z" fill="#6b9acf"/>
+    </g>)}
+    <!-- The console sits in front of the character; hands overlay the vinyl. -->
+    <path d="M54 96H150V100H154V120H150V124H54V120H50V100H54Z" fill="#293c4b"/>
+    <path d="M54 100H150V118H54Z" fill="#a5b8c7"/>
+    <path d="M54 118H150V122H54Z" fill="#526b83"/>
+    <path d="M58 124H62V142H58ZM142 124H146V142H142Z" fill="#6b7890"/>
+    <path d="M54 140H66V144H54ZM138 140H150V144H138Z" fill="#293c4b"/>
+    {records.map(record => <g transform={`translate(${record.x} 109)`}>
+      <path d="M-8-10H8V-8H10V-6H12V6H10V8H8V10H-8V8H-10V6H-12V-6H-10V-8H-8Z" fill="#26303d"/>
+      <path d="M-6-8H6V-6H8V6H6V8H-6V6H-8V-6H-6Z" fill="none" stroke="#4a5667" stroke-width="2"/>
+      <g class="record-spin">
+        <circle r="5" fill={record.color}/>
+        <path d="M-4-2H0V0H-4Z" fill="#ffefd1"/>
+        <rect x="-1" y="-1" width="2" height="2" fill="#26303d"/>
+      </g>
+    </g>)}
+    <path d="M90 100H92V114H84V116H94V100ZM142 100H144V114H136V116H146V100Z" fill="#eaf0e5"/>
+    <path d="M82 112H88V116H82ZM134 112H140V116H134Z" fill="#edbc6c"/>
+    <path d="M98 100H106V118H98Z" fill="#33465b"/>
+    <path d="M100 102H102V106H100ZM104 102H106V108H104Z" fill="#95ca95"/>
+    <path d="M100 110H104V112H100ZM100 114H106V116H100Z" fill="#eecb7a"/>
+    {poses.map((pose, index) => <g class={`pixel-dance pose-${index + 1}`}>
+      <path d={pose.hands} fill="#ffddba" stroke="#ad795d" stroke-width="1"/>
     </g>)}
     <path d="M2 2H198V154H2Z" fill="none" stroke="#c4d3c3" stroke-width="2"/>
   </svg>
@@ -74,7 +101,7 @@ const poses = [
       const button = this.querySelector<HTMLButtonElement>('button')!;
       const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
       let paused = preference.matches;
-      const update = () => { this.classList.toggle('paused', paused); button.textContent = paused ? 'Play' : 'Pause'; button.setAttribute('aria-label', paused ? 'Play pixel dancer' : 'Pause pixel dancer'); };
+      const update = () => { this.classList.toggle('paused', paused); button.textContent = paused ? 'Play' : 'Pause'; button.setAttribute('aria-label', paused ? 'Play pixel DJ' : 'Pause pixel DJ'); };
       const toggle = () => { paused = !paused; update(); };
       const motionChanged = () => { if (preference.matches) paused = true; update(); };
       this.classList.add('ready');
