@@ -179,7 +179,29 @@ footer { margin-top: 75px; border-top: 1px solid var(--line); }
 /* Local profile photos; multiple photos rotate every five seconds. */
 .hero-profile-grid { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 80px; align-items: start; }
 .hero-profile-copy .hero-aside { margin-top: 34px; }
-.hero-profile-copy .hero-aside ul { display: flex; flex-wrap: wrap; gap: 5px 18px; max-width: 550px; }
+.hero-profile-copy .hero-aside {
+  margin-top: 34px;
+}
+
+.hero-profile-copy .hero-aside ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 550px;
+  margin-top: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-profile-copy .hero-aside li {
+  padding: 7px 12px;
+  border: 1px solid rgba(36, 91, 196, 0.25);
+  border-radius: 5px;
+  background: rgba(36, 91, 196, 0.05);
+  color: var(--color-accent);
+  font-size: 14px;
+  line-height: 1.4;
+}
 profile-gallery { display: block; width: 100%; }
 .profile-photo-frame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #f6f7f9; }
 .profile-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s ease; }
