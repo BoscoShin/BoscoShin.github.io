@@ -22,7 +22,6 @@ photos: [
       { src: '/images/profile/image5.jpg', alt: 'Wonseop Shin at a conference' },
         { src: '/images/profile/image6.jpg', alt: 'Wonseop Shin at a conference' },
           { src: '/images/profile/image7.jpg', alt: 'Wonseop Shin at a conference' },
-            { src: '/images/profile/image8.jpg', alt: 'Wonseop Shin at a conference' },
 { src: '/images/profile/image9.png', alt: 'Wonseop Shin at a conference' },
 ] as ProfilePhoto[],
 photoIntervalMs: 5000,
