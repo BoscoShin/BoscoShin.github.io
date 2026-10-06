@@ -1,0 +1,21 @@
+---
+import { profile } from '../data/profile';
+import ResourceLink from './ResourceLink.astro';
+import ProfileGallery from './ProfileGallery.astro';
+import MiniRoom from './MiniRoom.astro';
+---
+<section id="home" class="hero shell">
+  <div class="homepage-label"><span>Wonseop Shin</span><span>Multimodal Generative AI Researcher</span></div>
+  <div class="hero-profile-grid">
+    <div class="hero-profile-copy">
+      <h1>{profile.name}</h1>
+      <p class="role">{profile.role}</p>
+      <p class="hero-intro">{profile.introduction}</p>
+      <div class="hero-links flex flex-wrap gap-3">
+        <ResourceLink label="Google Scholar" href={profile.links.scholar} /><ResourceLink label="Email" href={profile.links.email ? 'mailto:' + profile.links.email : undefined} />
+      </div>
+      <div class="hero-aside"><span class="eyebrow">RESEARCH INTERESTS</span><ul>{profile.interests.map(interest => <li>{interest}</li>)}</ul></div>
+    </div>
+    <div class="hero-profile-side"><ProfileGallery /><MiniRoom /></div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+---
+import { assetUrl } from '../utils/urls';
+const sections = [{ id: 'research', label: 'Research' }, { id: 'news', label: 'News' }, { id: 'about', label: 'About' }];
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+---
+<header id="top" class="site-header shell flex items-center justify-between">
+  <a class="wordmark" href={assetUrl('/')} aria-label="Wonseop Shin home">Wonseop Shin</a>
+  <nav aria-label="Main navigation" class="flex items-center gap-6 sm:gap-9">
+    {sections.map(item => <a href={assetUrl('/' + item.id + '/')} aria-current={currentPath === assetUrl('/' + item.id + '/').replace(/\/$/, '') ? 'page' : undefined}>{item.label}</a>)}
+  </nav>
+</header>

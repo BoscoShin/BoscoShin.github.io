@@ -1,0 +1,32 @@
+---
+import type { ResearchProject } from '../data/types';
+import { assetUrl } from '../utils/urls';
+import ResourceLink from './ResourceLink.astro';
+interface Props { project: ResearchProject; index: number }
+const { project, index } = Astro.props;
+const hasLinks = Object.values(project.links).some(Boolean);
+---
+<article id={project.id} class:list={['research-project', 'reveal', { reverse: index % 2 === 1, 'lab-project': !!project.status }]}>
+  <figure class="project-visual">
+    {project.preview?.type === 'video' ? <video class="preview-media" controls muted loop playsinline preload="none" poster={assetUrl(project.preview.poster)} aria-label={project.preview.alt}><source src={assetUrl(project.preview.src)} /><p>{project.preview.alt}</p></video>
+      : project.preview?.type === 'image' ? <img class="preview-media" src={assetUrl(project.preview.src)} alt={project.preview.alt} width="1024" height="571" loading="lazy" />
+      : <div class="project-text-preview"><span class="eyebrow">CONVERGENCE RESEARCH CENTER</span><strong>CRC</strong><p>Emotional & Intelligent<br />Child Care</p><span>{project.period}</span></div>}
+    {!project.status && <figcaption><span>{project.category}</span>{project.placeholder && <span>EXAMPLE VISUAL</span>}</figcaption>}
+  </figure>
+  <div class="project-copy">
+    {project.status && <p class="project-status">{project.status === 'ongoing' ? 'Ongoing' : 'Finished'}</p>}
+    <h2>{project.title.split('\n').map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+    {project.titleKo && <p class="project-title-ko" lang="ko">{project.titleKo}</p>}
+    <p class="project-description">{project.description}</p>
+    <ul class="tags flex flex-wrap gap-2">{project.tags.map(tag => <li>{tag}</li>)}</ul>
+    {(project.period || project.funding) && <dl class="project-funding">
+      {project.period && <div><dt>Period</dt><dd>{project.period}</dd></div>}
+      {project.funding && <div><dt>Funded by</dt><dd lang="ko">{project.funding}</dd></div>}
+      {project.programme && <div><dt>Program</dt><dd lang="ko">{project.programme}</dd></div>}
+      {project.grantNumber && <div><dt>Grant</dt><dd>{project.grantNumber}</dd></div>}
+    </dl>}
+    {project.acknowledgements?.length && <details class="project-acknowledgement"><summary>Acknowledgement</summary>{project.acknowledgements.map(text => <p>{text}</p>)}</details>}
+    {hasLinks && <div class="project-links flex flex-wrap gap-6">{project.links.paper && <ResourceLink label="Paper" href={project.links.paper} />}{project.links.project && <ResourceLink label="Project" href={project.links.project} />}{project.links.code && <ResourceLink label="Code" href={project.links.code} />}</div>}
+    {project.placeholder && <p class="example-label">Placeholder research topic</p>}
+  </div>
+</article>

@@ -1,0 +1,6 @@
+---
+interface Props { number?: string; title: string; note?: string; level?: 'h1' | 'h2' }
+const { title, note, level = 'h2' } = Astro.props;
+const Heading = level;
+---
+<div class="section-heading"><Heading>{title}</Heading>{note && <p>{note}</p>}</div>

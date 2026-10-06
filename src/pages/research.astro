@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ResearchProject from '../components/ResearchProject.astro';
+import Publications from '../components/Publications.astro';
+import { projects } from '../data/projects';
+
+---
+<Layout title="Research" description="Research-lab R&D projects and publications.">
+  <section id="research" class="section shell">
+    <SectionHeading title="Research" level="h1" />
+    <nav class="research-section-nav" aria-label="Research sections"><a href="#projects">R&D Projects</a><a href="#publications">Publications</a></nav>
+    <div id="projects"><h2 class="rd-section-title">R&D Projects</h2><p class="rd-section-note">Research projects at our laboratory</p><div class="research-list">{projects.map((project, index) => <ResearchProject project={project} index={index} />)}</div></div>
+  </section>
+  <Publications />
+</Layout>

@@ -1,0 +1,9 @@
+---
+import { news } from '../data/news';
+import { assetUrl } from '../utils/urls';
+import SectionHeading from './SectionHeading.astro';
+interface Props { headingLevel?: 'h1' | 'h2' }
+const { headingLevel = 'h2' } = Astro.props;
+const sorted = [...news].sort((a, b) => b.date.localeCompare(a.date));
+---
+<section id="news" class="section shell reveal"><SectionHeading title="News" level={headingLevel} /><div class="news-list">{sorted.map(item => <article class="news-row"><time datetime={item.date}>{new Date(`${item.date}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}</time><p>{item.url ? <a href={assetUrl(item.url)}>{item.text} <span aria-hidden="true">↗</span></a> : item.text}{item.placeholder && <span class="example-label">EXAMPLE</span>}</p></article>)}</div></section>

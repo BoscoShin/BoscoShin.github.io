@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Publications from '../components/Publications.astro';
+import { homePublicationIds } from '../data/publications';
+---
+<Layout><Hero /><Publications selectedIds={homePublicationIds} limit={3} showAllLink groupByCategory={false} /></Layout>

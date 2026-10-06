@@ -1,0 +1,9 @@
+---
+import { education, experience } from '../data/experience';
+import { profile } from '../data/profile';
+import SectionHeading from './SectionHeading.astro';
+interface Props { headingLevel?: 'h1' | 'h2' }
+const { headingLevel = 'h2' } = Astro.props;
+---
+<section id="about" class="section shell reveal"><SectionHeading title="Experience & Education" level={headingLevel} /><div class="about-grid"><div class="about-intro"><p class="about-label">Research interests</p><p>{profile.description}</p></div><div class="timeline">{[{ title: 'Education', entries: education }, { title: 'Experience', entries: experience }].map(group => <div class="timeline-group"><h2 class="eyebrow">{group.title}</h2>{group.entries.map(entry => <article><p class="period">{entry.period}</p><div><h3>{entry.title}</h3><p class="institution">{entry.institution}</p><p class="timeline-description">{entry.description}</p>{entry.placeholder && <span class="example-label">EXAMPLE ENTRY</span>}</div></article>)}</div>)}</div></div></section>
+

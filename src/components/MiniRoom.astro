@@ -1,0 +1,90 @@
+---
+const poses = [
+  { x: 70, y: 40, left: 'M6 42H0V36H-6V24H0V30H6Z', right: 'M54 42H60V48H66V54H60V52H54Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V66H52V72H38V68H36Z' },
+  { x: 70, y: 38, left: 'M6 42H0V46H-6V52H0V50H6Z', right: 'M54 42H60V36H66V24H60V30H54Z', feet: 'M16 62H28V66H24V72H10V68H16ZM36 62H46V72H34V68H36Z' },
+  { x: 70, y: 40, left: 'M6 42H0V36H-6V24H0V30H6Z', right: 'M54 42H60V36H66V24H60V30H54Z', feet: 'M16 62H28V72H12V68H16ZM36 62H46V72H50V76H36Z' },
+  { x: 70, y: 38, left: 'M6 42H0V46H-6V52H0V50H6Z', right: 'M54 42H60V48H66V54H60V52H54Z', feet: 'M16 62H28V66H24V72H10V68H16ZM36 62H46V66H52V72H38V68H36Z' },
+];
+---
+<pixel-room class="mini-room">
+  <div class="mini-room-caption"><span>mini room · dance</span><button type="button" hidden aria-label="Pause pixel dancer">Pause</button></div>
+  <svg viewBox="0 0 200 156" role="img" aria-label="A pixel portrait of Wonseop Shin with black hair and glasses, dancing in a sunny computer graphics studio" shape-rendering="crispEdges">
+    <rect x="1" y="1" width="198" height="154" fill="#f3f8f4"/>
+    <path d="M2 2H198V98H2Z" fill="#f5f5df"/>
+    <path d="M2 98H198V154H2Z" fill="#d4e5cd"/>
+    <path d="M2 98H198V102H2Z" fill="#a6c0a1"/>
+    <path d="M2 126H198M42 102V154M82 102V154M122 102V154M162 102V154" stroke="#bdD5b7" stroke-width="2"/>
+    <path d="M14 14H64V58H14Z" fill="#72878b"/>
+    <path d="M18 18H60V54H18Z" fill="#b8e5ed"/>
+    <path d="M18 40H28V34H38V40H48V36H60V54H18Z" fill="#82b897"/>
+    <path d="M46 22H54V30H46Z" fill="#ffe3a0"/>
+    <path d="M18 36H60M38 18V54" stroke="#f9f9ed" stroke-width="4"/>
+    <path d="M146 18H176V42H146Z" fill="#b5c7b2"/>
+    <path d="M150 22H172V38H150Z" fill="#ffefbe"/>
+    <path d="M156 28H160V24H164V28H168V32H164V36H160V32H156Z" fill="#edb756"/>
+    <path d="M14 84H56V90H14ZM18 90H22V112H18ZM48 90H52V112H48Z" fill="#b88f69"/>
+    <path d="M18 60H48V80H18Z" fill="#344963"/>
+    <path d="M22 64H44V76H22Z" fill="#9ec6e5"/>
+    <path d="M26 68H30V72H26ZM34 68H40V70H34Z" fill="#f8f2ce"/>
+    <path d="M30 80H36V84H26V86H40V84H36" fill="#697b8c"/>
+    <path d="M46 78H52V82H46Z" fill="#e5d2a3"/>
+    <path d="M164 98H182V116H164Z" fill="#cf9174"/>
+    <path d="M162 96H184V102H162Z" fill="#e8b190"/>
+    <path d="M172 78H176V96H172Z" fill="#467c62"/>
+    <path d="M162 78H172V84H166V80H162ZM176 70H186V76H180V80H176ZM168 66H174V78H168Z" fill="#78ab76"/>
+    <path d="M64 116H140V120H148V134H140V138H64V134H56V120H64Z" fill="#e9c98b"/>
+    <path d="M64 120H140V134H64Z" fill="#fff0c2"/>
+    <path d="M78 120H126V124H134V130H78Z" fill="#d6cfa0"/>
+    <g fill="#ed987b"><path d="M58 62H62V72H56V68H58ZM140 48H144V58H138V54H140Z"/><path d="M62 62H68V66H62ZM144 48H150V52H144Z"/></g>
+    {poses.map((pose, index) => <g class={`pixel-dance pose-${index + 1}`} transform={`translate(${pose.x} ${pose.y})`}>
+      <path d={pose.left} fill="#efbd99" stroke="#293c4b" stroke-width="2"/><path d={pose.right} fill="#efbd99" stroke="#293c4b" stroke-width="2"/>
+      <path d="M6 40H18V50H6ZM42 40H54V50H42Z" fill="#293c4b"/>
+      <path d="M8 42H16V46H8ZM44 42H52V46H44Z" fill="#4b6182"/>
+      <path d={pose.feet} fill="#eac577" stroke="#293c4b" stroke-width="2"/>
+      <path d="M16 40H44V44H48V58H44V64H16V60H12V44H16Z" fill="#293c4b"/>
+      <path d="M18 44H42V48H44V58H40V62H18V58H16V48H18Z" fill="#354a67"/>
+      <path d="M24 44H36V62H24Z" fill="#f9ecc5"/>
+      <path d="M18 44H22V50H24V54H22V58H18ZM38 44H42V58H38V54H36V50H38Z" fill="#547399"/>
+      <path d="M24 44H26V48H28V52H32V48H34V44H36V50H34V54H32V58H28V54H26V50H24Z" fill="#d3e4ef"/>
+      <path d="M28 56H32V62H28Z" fill="#6ea6d7"/>
+      <path d="M24 38H36V44H32V46H28V44H24Z" fill="#dca17d"/>
+      <path d="M14 8H46V12H50V18H52V36H48V42H42V46H18V42H12V36H8V18H10V12H14Z" fill="#28313d"/>
+      <path d="M14 18H46V22H48V34H44V40H40V42H20V40H16V34H12V24H14Z" fill="#f0c5a4"/>
+      <path d="M16 20H42V24H44V34H40V38H22V36H18V30H16Z" fill="#ffddba"/>
+      <path d="M8 26H12V34H8ZM48 26H52V34H48Z" fill="#e4b18f"/>
+      <path d="M12 10H16V6H24V4H36V6H44V8H48V12H52V22H48V24H44V18H38V16H34V20H30V16H26V20H20V18H16V24H12Z" fill="#26303d"/>
+      <path d="M18 10H26V8H36V10H42V12H48V16H42V14H36V12H26V14H18Z" fill="#435063"/>
+      <path d="M14 24H26V26H28V34H26V36H14V34H12V26H14ZM34 24H46V26H48V34H46V36H34V34H32V26H34Z" fill="#26303d"/>
+      <path d="M16 26H24V34H16ZM36 26H44V34H36Z" fill="#f9d8b9"/>
+      <path d="M26 26H34V28H26ZM8 24H14V26H8ZM46 24H52V26H46Z" fill="#26303d"/>
+      <path d={index === 3 ? 'M18 30H22V32H18ZM38 30H42V32H38Z' : 'M20 28H22V32H20ZM38 28H40V32H38Z'} fill="#26303d"/>
+      <path d="M16 26H18V28H16ZM36 26H38V28H36Z" fill="#fff8e5"/>
+      <path d="M14 36H20V38H14ZM40 36H46V38H40Z" fill="#eaa187"/>
+      <path d="M28 30H30V34H32V36H28Z" fill="#dba57e"/>
+      <path d="M26 38H34V40H26Z" fill="#8d5651"/>
+    </g>)}
+    <path d="M2 2H198V154H2Z" fill="none" stroke="#c4d3c3" stroke-width="2"/>
+  </svg>
+</pixel-room>
+<script>
+  class PixelRoom extends HTMLElement {
+    private cleanup?: () => void;
+    connectedCallback() {
+      this.cleanup?.();
+      const button = this.querySelector<HTMLButtonElement>('button')!;
+      const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let paused = preference.matches;
+      const update = () => { this.classList.toggle('paused', paused); button.textContent = paused ? 'Play' : 'Pause'; button.setAttribute('aria-label', paused ? 'Play pixel dancer' : 'Pause pixel dancer'); };
+      const toggle = () => { paused = !paused; update(); };
+      const motionChanged = () => { if (preference.matches) paused = true; update(); };
+      this.classList.add('ready');
+      button.hidden = false;
+      button.addEventListener('click', toggle);
+      preference.addEventListener('change', motionChanged);
+      update();
+      this.cleanup = () => { button.removeEventListener('click', toggle); preference.removeEventListener('change', motionChanged); };
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  if (!customElements.get('pixel-room')) customElements.define('pixel-room', PixelRoom);
+</script>

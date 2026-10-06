@@ -1,0 +1,5 @@
+---
+import { profile } from '../data/profile';
+import ResourceLink from './ResourceLink.astro';
+---
+<footer class="shell"><div class="footer-contact"><ResourceLink label="Email" href={profile.links.email ? `mailto:${profile.links.email}` : undefined} />{'github' in profile.links && typeof profile.links.github === 'string' && <ResourceLink label="GitHub" href={profile.links.github} />}<ResourceLink label="Google Scholar" href={profile.links.scholar} /></div><div class="footer-bottom"><span>© {new Date().getFullYear()} {profile.name}</span><span>Chung-Ang University</span><a href="#top">Back to top ↑</a></div></footer>

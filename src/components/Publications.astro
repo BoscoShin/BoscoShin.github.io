@@ -1,0 +1,63 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import PublicationItem from './PublicationItem.astro';
+import { publications, publicationCategories } from '../data/publications';
+import { assetUrl } from '../utils/urls';
+interface Props { selectedIds?: readonly string[]; limit?: number; title?: string; headingLevel?: 'h1' | 'h2'; showAllLink?: boolean; groupByCategory?: boolean }
+const { selectedIds, limit, title = 'Publications', headingLevel = 'h2', showAllLink = false, groupByCategory = true } = Astro.props;
+const selected = selectedIds ? selectedIds.flatMap(id => publications.filter(p => p.id === id)) : [...publications];
+const sorted = selected.sort((a, b) => b.year - a.year);
+const items = limit === undefined ? sorted : sorted.slice(0, limit);
+const years = [...new Set(items.map(p => p.year))];
+const YearHeading = headingLevel === 'h1' ? 'h2' : 'h3';
+const paperHeading = headingLevel === 'h1' ? 'h3' : 'h4';
+const CategoryHeading = headingLevel === 'h1' ? 'h2' : 'h3';
+const CategoryYearHeading = headingLevel === 'h1' ? 'h3' : 'h4';
+const categoryPaperHeading = headingLevel === 'h1' ? 'h4' : 'h5';
+const groups = publicationCategories.map(category => ({ category, entries: items.filter(p => p.category === category) })).filter(group => group.entries.length);
+---
+<section id="publications" class="section shell">
+  <SectionHeading title={title} level={headingLevel} />
+  {items.some(p => p.placeholder) && <p class="demo-notice">The entries below are illustrative placeholders, ready for your publications.</p>}
+  {groupByCategory ? <>
+    <nav class="publication-category-nav" aria-label="Publication categories">
+      {groups.map(({ category, entries }) => <a href={`#publications-${category.toLowerCase()}`}>{category} <span>{entries.length}</span></a>)}
+    </nav>
+    {groups.map(({ category, entries }) => <details id={`publications-${category.toLowerCase()}`} class="publication-category" open={category === 'SCIE'}>
+      <summary class="publication-category-toggle">
+        <CategoryHeading class="publication-category-heading">{category} <span>{entries.length}</span></CategoryHeading>
+        <span class="publication-toggle-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="publication-category-content">
+      {[...new Set(entries.map(p => p.year))].map(year => <div class="publication-year">
+        <CategoryYearHeading class="year-heading">{year}</CategoryYearHeading>
+        <div>{entries.filter(p => p.year === year).map(publication => <PublicationItem publication={publication} headingLevel={categoryPaperHeading} />)}</div>
+      </div>)}
+      </div>
+    </details>)}
+  </> : years.map(year => <div class="publication-year"><YearHeading class="year-heading">{year}</YearHeading><div>{items.filter(p => p.year === year).map(publication => <PublicationItem publication={publication} headingLevel={paperHeading} />)}</div></div>)}
+  {showAllLink && <div class="publication-more"><a class="all-publications-button" href={assetUrl('/publications/')}>View all publications <span aria-hidden="true">↗</span></a></div>}
+</section>
+
+<script>
+  // Open a folded category before following a category or paper permalink.
+  function revealPublicationHash() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const target = document.getElementById(hash);
+    const category = target?.closest<HTMLDetailsElement>('details.publication-category');
+    if (category && !category.open) {
+      category.open = true;
+      target?.scrollIntoView({ block: 'start' });
+    }
+  }
+  window.addEventListener('hashchange', revealPublicationHash);
+  document.querySelectorAll<HTMLAnchorElement>('.publication-category-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      const target = document.getElementById(link.hash.slice(1));
+      if (target instanceof HTMLDetailsElement) target.open = true;
+    });
+  });
+  document.addEventListener('astro:page-load', revealPublicationHash);
+  revealPublicationHash();
+</script>
