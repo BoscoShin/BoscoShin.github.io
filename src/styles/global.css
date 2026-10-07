@@ -6,6 +6,13 @@
  --font-sans: Arial, Helvetica, 'Malgun Gothic', sans-serif;
 }
 :root { color-scheme: light; --muted: #666666; --line: #e6e6e6; }
+/* Justify reading paragraphs while keeping headings and metadata easy to scan. */
+.hero-intro, .project-description, .project-title-ko, .project-acknowledgement p,
+.news-row p, .about-intro > p:not(.about-label), .timeline-description {
+ text-align: justify;
+ text-align-last: start;
+ hyphens: auto;
+}
 html { scroll-behavior: smooth; scroll-padding-top: 32px; }
 body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); font-size: 16px; -webkit-font-smoothing: antialiased; }
 ::selection { background: #dce8ff; }
@@ -224,11 +231,12 @@ profile-gallery { display: block; width: 100%; }
 @media(max-width:700px) { .publication-more { margin-left: 0; } }
 
 /* A light mini-homepage touch; white, blue, and quiet pixel details. */
-.site-header { height: 82px; border-bottom-style: dashed; }
+.site-header { height: 82px; border-bottom-style: solid; }
 .wordmark::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 9px; background: var(--color-accent); box-shadow: 3px 3px 0 #dae7ff; }
-.site-header nav { gap: 9px; }
-.site-header nav a { padding: 8px 14px; border: 1px solid #dbe4f1; border-radius: 3px 3px 0 0; color: #527097; font-size: 15px; background: #fbfcff; }
-.site-header nav a:hover, .site-header nav a[aria-current='page'] { background: #eef4ff; color: var(--color-accent); text-decoration: none; border-color: #a8c1e6; }
+.site-header nav { gap: 28px; }
+.site-header nav a { padding: 8px 0; border: 0; border-radius: 0; color: var(--muted); font-size: 15px; background: transparent; }
+.site-header nav a:hover, .site-header nav a[aria-current='page'] { color: var(--color-accent); text-decoration: none; }
+.site-header nav a[aria-current='page'] { font-weight: 600; }
 .hero { padding-top: 35px; }
 .homepage-label { display: flex; justify-content: space-between; gap: 20px; padding: 0 0 11px; color: #526a89; font-size: 14px; }
 .homepage-label span:first-child { color: var(--color-accent); }
@@ -259,7 +267,7 @@ profile-gallery { display: block; width: 100%; }
 @keyframes record-spin { to { transform: rotate(360deg); } }
 @media(max-width:1000px) { .hero-profile-grid { padding: 24px; gap: 30px; grid-template-columns: minmax(0,1fr) 200px; } }
 @media(max-width:700px) {
- .site-header { height: 74px; } .site-header nav a { padding: 6px 8px; font-size: 14px; } .site-header nav { gap: 5px; }
+ .site-header { height: 74px; } .site-header nav a { padding: 8px 0; font-size: 14px; } .site-header nav { gap: 16px; }
  .homepage-label { flex-wrap: wrap; gap: 6px; font-size: 13px; }
  .hero-profile-grid { grid-template-columns: minmax(0,1fr); padding: 20px; gap: 25px; }
  .hero h1 { font-size: 38px; } .hero-intro { font-size: 16px; }
@@ -267,7 +275,7 @@ profile-gallery { display: block; width: 100%; }
  .hero-profile-side profile-gallery { width: 100%; } .mini-room-caption { flex-wrap: wrap; font-size: 11px; } .mini-room-caption button { font-size: 11px; }
  .hero-links { gap: 14px; }
 }
-@media(max-width:360px) { .site-header { flex-direction: row; align-items: center; gap: 6px; } .wordmark { font-size: 14px; } .site-header nav { gap: 3px; } .site-header nav a { font-size: 13px; padding: 5px 6px; } .hero h1 { font-size: 32px; } .hero-profile-grid { padding: 16px; } }
+@media(max-width:360px) { .site-header { flex-direction: row; align-items: center; gap: 6px; } .wordmark { font-size: 14px; } .site-header nav { gap: 14px; } .site-header nav a { font-size: 13px; padding: 8px 0; } .hero h1 { font-size: 32px; } .hero-profile-grid { padding: 16px; } }
 @media(prefers-reduced-motion:reduce) { .mini-room.ready :is(.pixel-dance, .record-spin) { animation: none; } .mini-room .pose-1 { opacity: 1; } }
 
 /* R&D projects: preserve the complete lab overview image and funding metadata. */
@@ -315,7 +323,7 @@ profile-gallery { display: block; width: 100%; }
  .publication-item .publication-title { font-size: 17px; }
  .authors { font-size: 13px; }
  .site-header .wordmark { font-size: 14px; }
- .site-header nav a { font-size: 13px; padding: 6px 7px; }
+ .site-header nav a { font-size: 13px; padding: 8px 0; }
 }
 @media(max-width:360px) { .site-header { height: auto; min-height: 90px; flex-wrap: wrap; padding-block: 14px; } }
 @media print { .publication-category-content { display: block !important; } .publication-category-toggle { break-after: avoid; } }

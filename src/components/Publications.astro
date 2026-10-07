@@ -36,7 +36,7 @@ const groups = publicationCategories.map(category => ({ category, entries: items
       </div>
     </details>)}
   </> : years.map(year => <div class="publication-year"><YearHeading class="year-heading">{year}</YearHeading><div>{items.filter(p => p.year === year).map(publication => <PublicationItem publication={publication} headingLevel={paperHeading} />)}</div></div>)}
-  {showAllLink && <div class="publication-more"><a class="all-publications-button" href={assetUrl('/publications/')}>View all publications <span aria-hidden="true">↗</span></a></div>}
+  {showAllLink && <div class="publication-more"><a class="all-publications-button" href={assetUrl('/publications/')}>View all publications</a></div>}
 </section>
 
 <script>

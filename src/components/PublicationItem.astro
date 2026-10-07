@@ -6,12 +6,13 @@ import ResourceLink from './ResourceLink.astro';
 interface Props { publication: Publication; headingLevel?: 'h3' | 'h4' | 'h5' }
 const { publication: p, headingLevel = 'h4' } = Astro.props;
 const Heading = headingLevel;
+const showArrow = Astro.url.pathname.replace(/\/$/, '') !== assetUrl('/').replace(/\/$/, '');
 const isOwnAuthor = (author: string) => [profile.name, '신원섭'].includes(author.replace(/\*$/, ''));
 ---
 <article class:list={['publication-item', { 'publication-text-only': !p.thumbnail, 'publication-featured': !!p.highlight }]} id={`paper-${p.id}`}>
   {p.thumbnail && <img src={assetUrl(p.thumbnail)} alt={p.thumbnailAlt ?? p.title} width="180" height="120" loading="lazy" />}
   <div>
-    {p.highlight && <a class="publication-highlight-label" href={p.highlight.sourceUrl} target="_blank" rel="noopener noreferrer" title={p.highlight.note}>{p.highlight.label}<span aria-hidden="true">↗</span></a>}
+    {p.highlight && <a class="publication-highlight-label" href={p.highlight.sourceUrl} target="_blank" rel="noopener noreferrer" title={p.highlight.note}>{p.highlight.label}{showArrow && <span aria-hidden="true">↗</span>}</a>}
     <Heading class="publication-title">{p.title}</Heading>
     {p.titleKo && <p class="publication-title-ko">{p.titleKo}</p>}
     <p class="authors">{p.authors.map((author, i) => <>{i > 0 && ', '}{isOwnAuthor(author) ? <strong>{author}</strong> : author}</>)}</p>

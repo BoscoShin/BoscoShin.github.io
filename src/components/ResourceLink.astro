@@ -3,6 +3,7 @@ import { assetUrl } from '../utils/urls';
 interface Props { label: string; href?: string; prominent?: boolean }
 const { label, href, prominent = false } = Astro.props;
 const external = href?.startsWith('https://') || href?.startsWith('http://');
+const showArrow = Astro.url.pathname.replace(/\/$/, '') !== assetUrl('/').replace(/\/$/, '');
 ---
-{href ? <a class:list={['resource-link', { prominent }]} href={assetUrl(href)} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{label}<span aria-hidden="true">↗</span></a>
-  : <span class:list={['resource-link', 'unavailable', { prominent }]} aria-disabled="true" title={`${label} link has not been added`}>{label}<span aria-hidden="true">↗</span><span class="sr-only"> (link not yet added)</span></span>}
+{href ? <a class:list={['resource-link', { prominent }]} href={assetUrl(href)} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{label}{showArrow && <span aria-hidden="true">↗</span>}</a>
+  : <span class:list={['resource-link', 'unavailable', { prominent }]} aria-disabled="true" title={`${label} link has not been added`}>{label}{showArrow && <span aria-hidden="true">↗</span>}<span class="sr-only"> (link not yet added)</span></span>}
