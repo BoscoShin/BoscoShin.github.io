@@ -2,7 +2,7 @@ export interface ProfilePhoto { src: string; alt: string; position?: string }
 
 export const profile = {
   name: 'Wonseop Shin',
-  role: 'Ph.D. Student @ Chung-Ang University',
+  role: '4th Ph.D. Candidate @ Chung-Ang University',
   introduction: 'Hello Everyone!!! I am Wonseop Shin, a Ph.D. student at GRLab, Chung-Ang University, advised by Professor Sanghyun Seo. My research lies at the intersection of music, dance, generative models, and computer graphics. Outside the lab, I pursue turntablism and occasionally DJ at various events and venues.',
   description: 'I am a Ph.D. student at GRLab, Chung-Ang University, advised by Professor Sanghyun Seo. My research focuses on the intersection of music, dance, generative models, and computer graphics, with particular interests in human motion generation, multimodal learning, and visual content generation. I am interested in exploring how generative AI can connect different modalities and create expressive visual and motion-based experiences.',
   interests: [
@@ -31,4 +31,3 @@ links: {
   email: 'wonseop218@cau.ac.kr',
 },
 };
-
